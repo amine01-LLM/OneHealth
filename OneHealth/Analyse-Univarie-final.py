@@ -13,7 +13,7 @@ df["DEBUTSEM"] = pd.to_datetime(df["DEBUTSEM"])
 maladies = df['MALADIE'].unique()
 print("Maladies disponibles :", maladies)
 
-# Créer une figure avec sous-graphiques pour chaque maladie
+# figure avec sous-graphiques pour chaque maladie
 # fig, axes = plt.subplots(len(maladies), 2, figsize=(14, 4*len(maladies)))
 # if len(maladies) == 1:
 #     axes = [axes]  # Pour gérer le cas d'une seule maladie
