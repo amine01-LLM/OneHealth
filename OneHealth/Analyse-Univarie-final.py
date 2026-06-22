@@ -4,13 +4,12 @@ import seaborn as sns
 import matplotlib.dates as mdates
 
 
-# Recharger votre dataset nettoyé (si vous l'avez sauvegardé)
-# Sinon, repartez de df qui contient déjà les colonnes INCIDENCE et POP_ANNUAL
+
 df = pd.read_csv("DRC_Health_Weather_CLEANED.csv")
 
 df["DEBUTSEM"] = pd.to_datetime(df["DEBUTSEM"])
 
-# Liste des maladies présentes dans vos données
+# Liste des maladies présentes
 maladies = df['MALADIE'].unique()
 print("Maladies disponibles :", maladies)
 
