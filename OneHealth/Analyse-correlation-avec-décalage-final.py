@@ -88,9 +88,8 @@ max_lag = 12
 
 resultats_globaux = []
 
-# =====================================================
+
 # Boucle pour générer un graphique par maladie
-# =====================================================
 
 for maladie in maladies:
 
@@ -173,7 +172,7 @@ maladies_etude = ['PALUDISME', 'ROUGEOLE', 'CHOLERA', 'FIEVRE JAUNE']
 variables_climat = ['PRECTOTCORR', 'T2M', 'RH2M']
 max_lag = 12  # Analyser jusqu'à 12 semaines de décalage
 
-# Couleurs pour chaque maladie
+
 colors_maladie = {
     'PALUDISME': '#1f77b4',      # Bleu
     'ROUGEOLE': '#ff7f0e',        # Orange
@@ -197,7 +196,7 @@ for idx, maladie in enumerate(maladies_etude):
     
     if len(data) == 0:
         ax.set_visible(False)
-        print(f"\n⚠️  Données insuffisantes pour {maladie} à {province_etude}")
+        print(f"\n  Données insuffisantes pour {maladie} à {province_etude}")
         continue
     
     # Calculer les corrélations croisées
@@ -355,4 +354,4 @@ plt.tight_layout()
 plt.savefig('lags_optimaux_comparatif.png', dpi=150, bbox_inches='tight')
 plt.show()
 
-print("\n✅ Analyse terminée ! Graphiques sauvegardés.")
+print("\n Analyse terminée ! Graphiques sauvegardés.")
