@@ -12,12 +12,11 @@ maladies_etude = ['PALUDISME', 'ROUGEOLE', 'CHOLERA', 'FIEVRE JAUNE']
 variables_climat = ['PRECTOTCORR', 'T2M', 'RH2M']
 max_lag = 12  # Analyser jusqu'à 12 semaines de décalage
 
-# Couleurs pour chaque maladie
 colors_maladie = {
-    'PALUDISME': '#1f77b4',      # Bleu
-    'ROUGEOLE': '#ff7f0e',        # Orange
-    'CHOLERA': '#2ca02c',         # Vert
-    'FIEVRE JAUNE': '#d62728'     # Rouge
+    'PALUDISME': '#1f77b4',      
+    'ROUGEOLE': '#ff7f0e',        
+    'CHOLERA': '#2ca02c',         
+    'FIEVRE JAUNE': '#d62728'     
 }
 
 # =============================================================================
@@ -36,7 +35,7 @@ for idx, maladie in enumerate(maladies_etude):
     
     if len(data) == 0:
         ax.set_visible(False)
-        print(f"\n⚠️  Données insuffisantes pour {maladie} à {province_etude}")
+        print(f"\n Données insuffisantes pour {maladie} à {province_etude}")
         continue
     
     # Calculer les corrélations croisées
@@ -79,9 +78,9 @@ plt.savefig('correlations_croisees_4maladies.png', dpi=150, bbox_inches='tight')
 plt.show()
 
 
-# =============================================================================
+
 # PARTIE 2 : MATRICES DE CORRÉLATION GLOBALES PAR MALADIE
-# =============================================================================
+
 
 fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 axes = axes.flatten()
@@ -113,9 +112,9 @@ plt.savefig('matrices_correlation_4maladies.png', dpi=150, bbox_inches='tight')
 plt.show()
 
 
-# =============================================================================
+
 # PARTIE 3 : TABLEAU RÉCAPITULATIF COMPARATIF
-# =============================================================================
+
 
 print("\n" + "="*70)
 print("  SYNTHÈSE COMPARATIVE - LAGS OPTIMAUX PAR MALADIE")
@@ -168,9 +167,9 @@ print("\nCorrélation maximale :")
 print(pivot_corr.round(3))
 
 
-# =============================================================================
+
 # PARTIE 4 : VISUALISATION COMPARATIVE DES LAGS OPTIMAUX
-# =============================================================================
+
 
 fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -194,4 +193,4 @@ plt.tight_layout()
 plt.savefig('lags_optimaux_comparatif.png', dpi=150, bbox_inches='tight')
 plt.show()
 
-print("\n✅ Analyse terminée ! Graphiques sauvegardés.")
+print("\n Analyse terminée ! Graphiques sauvegardés.")
