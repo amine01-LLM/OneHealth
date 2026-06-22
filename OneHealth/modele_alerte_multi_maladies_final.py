@@ -9,10 +9,7 @@ import joblib
 import warnings
 warnings.filterwarnings('ignore')
 
-# =============================================================================
-# SYSTEME D'ALERTE PRECOCE — MULTI-MALADIES / MULTI-PROVINCES
-# Evaluation sur le train set (same as original paludisme pipeline)
-# =============================================================================
+
 
 df = pd.read_csv('DRC_Health_Weather_CLEANED.csv')
 if not pd.api.types.is_datetime64_any_dtype(df['DEBUTSEM']):
@@ -64,9 +61,7 @@ tous_seuils   = {}   # tous_seuils[maladie][province]  = tau
 tous_resultats = []  # liste de dict pour le tableau comparatif final
 
 
-# =============================================================================
-# PIPELINE PRINCIPAL — boucle maladie x province
-# =============================================================================
+
 for maladie in maladies_a_traiter:
 
     print("\n" + "=" * 70)
@@ -138,7 +133,7 @@ for maladie in maladies_a_traiter:
         )
         rf.fit(X_res, y_res)
 
-        # --- Optimisation tau (sur le train = toutes les données) ---
+        # --- Optimisation tau 
         y_proba   = rf.predict_proba(X_scaled)[:, 1]
         best_f1, best_tau = 0, 0.5
         for tau in np.arange(0.20, 0.80, 0.05):
@@ -189,9 +184,7 @@ for maladie in maladies_a_traiter:
         })
 
 
-# =============================================================================
-# SYNTHESE COMPARATIVE
-# =============================================================================
+
 print("\n" + "=" * 70)
 print("  SYNTHESE COMPARATIVE — TOUTES MALADIES x TOUTES PROVINCES")
 print("=" * 70)
@@ -226,9 +219,9 @@ else:
     print("  Aucun modele sous 0.5 !")
 
 
-# =============================================================================
+
 # VISUALISATION
-# =============================================================================
+
 fig, axes = plt.subplots(2, 3, figsize=(18, 11))
 fig.suptitle("Systeme d'alerte precoce — F1-Score par maladie et province", fontsize=14)
 axes = axes.flatten()
@@ -292,20 +285,13 @@ plt.savefig('heatmap_maladies_provinces.png', dpi=150, bbox_inches='tight')
 plt.show()
 
 
-# =============================================================================
+
 # SAUVEGARDE
-# =============================================================================
-joblib.dump(tous_modeles, 'modeles_multi_maladies.pkl')
-joblib.dump(tous_scalers, 'scalers_multi_maladies.pkl')
-joblib.dump(tous_seuils,  'seuils_multi_maladies.pkl')
-df_res.to_csv('resultats_multi_maladies.csv', index=False)
-print("\n  Modeles sauvegardes : modeles_multi_maladies.pkl")
+
 print("  Resultats exportes  : resultats_multi_maladies.csv")
 
 
-# =============================================================================
-# FONCTION D'ALERTE UNIVERSELLE
-# =============================================================================
+
 def alerte_precoce(maladie, province, precip, humidite, temperature):
     """
     maladie     : str  ex. 'PALUDISME', 'CHOLERA', 'ROUGEOLE'
