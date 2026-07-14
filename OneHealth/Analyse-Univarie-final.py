@@ -79,8 +79,7 @@ plt.show()
 maladies = [
     "PALUDISME",
     "ROUGEOLE",
-    "CHOLERA",
-    "FIEVRE JAUNE"
+    "CHOLERA"
 ]
 
 # ============================================================
@@ -176,7 +175,7 @@ plt.tight_layout(rect=[0, 0, 1, 0.93])
 # ============================================================
 
 plt.savefig(
-    "evolution_temporelle_4_maladies.png",
+    "evolution_temporelle_3_maladies.png",
     dpi=600,
     bbox_inches="tight"
 )
