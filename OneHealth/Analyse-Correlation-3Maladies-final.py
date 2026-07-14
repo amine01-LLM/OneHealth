@@ -8,7 +8,7 @@ df = pd.read_csv('DRC_Health_Weather_CLEANED.csv')
 
 # Configuration
 province_etude = 'KINSHASA'
-maladies_etude = ['PALUDISME', 'ROUGEOLE', 'CHOLERA', 'FIEVRE JAUNE']
+maladies_etude = ['PALUDISME', 'ROUGEOLE', 'CHOLERA']
 variables_climat = ['PRECTOTCORR', 'T2M', 'RH2M']
 max_lag = 12  # Analyser jusqu'à 12 semaines de décalage
 
